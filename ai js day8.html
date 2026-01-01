@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MINI PROJECT 1</h1>
+    <H3>User name Generater</H3>
+    <form id="usernameForm"> 
+        <p id="fullNameLabel">Full Name:</p>
+        <input type="text" name="fullName" id="fullName" placeholder="Enter full name" required/><br>
+        <p id="birthYearLabel">Birth Year: </p>
+        <input type="text" name="birthYear" id="birthYear" placeholder="Enter birth year" required/><br>
+        <input id="generateUsernameButton" type="submit" value="Generate Username">
+    </form>
+    <script type="text/javascript">
+        const usernameForm = document.getElementById('usernameForm');
+
+        usernameForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const birthYear = document.getElementById('birthYear').value;
+
+            const username = fullName.split(' ').map(name => name.charAt(0).toLowerCase()).join('') + birthYear;
+            alert('Generated Username: ' + username);
+        });
+        </script>
+<h1>MINI PROJECT 2</h1>
+<h3>Pallindrome checker</h3>
+<form id="pallindromeForm"> 
+    <p id="wordLabel">Enter Word:</p>
+    <input type="text" name="word" id="word" placeholder="Enter word" required/><br>
+    <input id="checkPallindromeButton" type="submit" value="Check Pallindrome">
+</form>
+<script type="text/javascript">
+    const pallindromeForm = document.getElementById('pallindromeForm');
+
+    pallindromeForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const word = document.getElementById('word').value;
+        const reversedWord = word.split('').reverse().join('');
+        if (word === reversedWord) {
+            alert(word + ' is a palindrome.');
+        } else {
+            alert(word + ' is not a palindrome.');
+        }
+    });
+</script><hr><hr>
+<h1>MINI PROJECT 3</h1>
+<H3>Text Reverse</H3>
+<form id="textReverseForm"> 
+    <p id="textLabel">Enter Text:</p>
+    <input type="text" name="text" id="text" placeholder="Enter text" required/><br>
+    <input id="reverseTextButton" type="submit" value="Reverse Text">
+</form>
+<script type="text/javascript">
+    const textReverseForm = document.getElementById('textReverseForm');
+
+    textReverseForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const text = document.getElementById('text').value;
+        const reversedText = text.split('').reverse().join('');
+        alert('Reversed Text: ' + reversedText);
+    });
+</script><hr><hr>
+<h1>MINI PROJECT 4</h1>
+<h3>Word Counter</h3>
+<form id="wordCounterForm"> 
+    <p id="textLabel">Enter Text:</p>
+    <input type="text" name="text" id="text" placeholder="Enter text" required/><br>
+    <input id="countWordsButton" type="submit" value="Count Words">
+</form>
+<script type="text/javascript">
+    const wordCounterForm = document.getElementById('wordCounterForm');
+
+    wordCounterForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const text = document.getElementById('text').value;
+        const wordCount = text.trim().split(/\s+/).filter(word => word.length > 0).length;
+        alert('Word Count: ' + wordCount);
+    });
+</script><hr><hr>
+<h1>MINI PROJECT 5</h1>
+<h3>Email Formatter & Validater</h3>
+<form id="emailForm"> 
+    <p id="emailLabel">Enter Email:</p>
+    <input type="text" name="email" id="email" placeholder="Enter email" required/><br>
+    <input id="validateEmailButton" type="submit" value="Validate & Format Email">
+</form>
+<script type="text/javascript">
+    const emailForm = document.getElementById('emailForm');
+
+    emailForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailPattern.test(email)) {
+            const formattedEmail = email.trim().toLowerCase();
+            alert('Valid Email! Formatted Email: ' + formattedEmail);
+        } else {
+            alert('Invalid Email Address.');
+        }
+    });
+    </script><hr><hr>
+<h1>MINI PROJECT 6</h1>
+<h3>Sentence Formatter</h3>
+<form id="sentenceForm"> 
+    <p id="sentenceLabel">Enter Sentence:</p>
+    <input type="text" name="sentence" id="sentence" placeholder="Enter sentence" required/><br>
+    <input id="formatSentenceButton" type="submit" value="Format Sentence">
+</form>
+<script type="text/javascript">
+    const sentenceForm = document.getElementById('sentenceForm');
+
+    sentenceForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const sentence = document.getElementById('sentence').value;
+        const formattedSentence = sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase();
+        alert('Formatted Sentence: ' + formattedSentence);
+    });
+    </script>
+</body>
+</html>
