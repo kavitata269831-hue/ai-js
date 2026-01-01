@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MINI PROJECT 1</h1>
+    <h3>Movie Booking system</h3>
+    <form id="bookingForm">
+        <p id="nameLabel">Name:</p>
+        <input type="text" name="name" id="name" placeholder="Your Name"/><br>
+        <p id="movieLabel">Select Movie:</p>
+        <select id="movie" name="movie">
+            <option value="movie1">Kumki 2</option>
+            <option value="movie2">Mathimaaran </option>
+            <option value="movie3">Kanmani</option>
+        </select><br>
+        <p id="seatsLabel">Number of Seats:</p>
+        <input type="number" name="seats" id="seats" min="1" max="10" placeholder="Number of Seats"/><br><br>
+        <input id="bookButton" type="submit" value="Book Now!" onclick="bookTickets(event)">
+    </form>
+    <script type="text/javascript">
+        function bookTickets(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById('name').value;
+            const movie = document.getElementById('movie').value;
+            const seats = document.getElementById('seats').value;
+
+            if (name === '' || seats === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            alert(`Booking Confirmed!\nName: ${name}\nMovie: ${movie}\nSeats: ${seats}`);
+        }
+        </script><hr><hr>
+    <h1>MINI PROJECTS 2</h1>
+    <h3>Product Inventory System</h3>
+    <form id="inventoryForm">
+        <p id="productLabel">Product Name:</p>
+        <input type="text" name="product" id="product" placeholder="Product Name"/><br>
+        <p id="quantityLabel">Quantity:</p>
+        <input type="number" name="quantity" id="quantity" min="1" placeholder="Quantity"/><br>
+        <p id="priceLabel">Price per Unit:</p>
+        <input type="number" name="price" id="price" min="0.01" step="0.01" placeholder="Price per Unit"/><br><br>
+        <input id="addButton" type="submit" value="Add Product" onclick="addProduct(event)">
+        </form>
+    <script type="text/javascript">
+        function addProduct(event) {
+            event.preventDefault(); 
+
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+
+            if (product === '' || quantity === '' || price === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const totalCost = quantity * price;
+
+            alert(`Product Added!\nProduct: ${product}\nQuantity: ${quantity}\nPrice per Unit: $${price}\nTotal Cost: $${totalCost.toFixed(2)}`);
+        }
+    </script><hr><hr>
+<h1>MINI PROJECT3</h1>
+<H3>Library Book Tracker</H3>
+<div class="container">
+        <h1>My Library</h1>
+        <button id="new-book-btn">Add New Book</button>
+        <div class="form-container" id="form-container">
+            <form id="book-form">
+                <input type="text" id="title" placeholder="Title" required><br>
+                <input type="text" id="author" placeholder="Author" required><br>
+                <input type="number" id="pages" placeholder="Pages" required><br>
+                <label>
+                    <input type="checkbox" id="is-read"> Read?
+                </label><br>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div class="library-container" id="library-container">
+        
+        </div>
+    </div>
+    <script>
+        let myLibrary = JSON.parse(localStorage.getItem('library')) || [];
+const newBookBtn = document.getElementById('new-book-btn');
+const formContainer = document.getElementById('form-container');
+const bookForm = document.getElementById('book-form');
+const libraryContainer = document.getElementById('library-container');
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+        this.id = Date.now(); 
+    }
+}
+function addBookToLibrary(title, author, pages, isRead) {
+    const newBook = new Book(title, author, pages, isRead);
+    myLibrary.push(newBook);
+    saveAndRender();
+}
+function render() {
+    libraryContainer.innerHTML = ''; 
+    myLibrary.forEach((book) => {
+        const bookCard = document.createElement('div');
+        bookCard.classList.add('book-card');
+        bookCard.setAttribute('data-id', book.id); // Associate DOM element with book ID
+
+        bookCard.innerHTML = `
+            <h3>${book.title}</h3>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pages}</p>
+            <p>Status: <span class="${book.isRead ? 'read-status' : 'not-read-status'}">${book.isRead ? 'Read' : 'Not Read Yet'}</span></p>
+            <button onclick="toggleReadStatus(${book.id})">Toggle Read Status</button>
+            <button onclick="removeBook(${book.id})">Remove Book</button>
+        `;
+        libraryContainer.appendChild(bookCard);
+    });
+}
+
+
+function saveAndRender() {
+    localStorage.setItem('library', JSON.stringify(myLibrary));
+    render();
+}
+
+
+function removeBook(id) {
+    myLibrary = myLibrary.filter(book => book.id !== id);
+    saveAndRender();
+}
+
+
+function toggleReadStatus(id) {
+    const book = myLibrary.find(book => book.id === id);
+    if (book) {
+        book.isRead = !book.isRead;
+        saveAndRender();
+    }
+}
+
+
+newBookBtn.addEventListener('click', () => {
+    formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+});
+
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const isRead = document.getElementById('is-read').checked;
+
+    addBookToLibrary(title, author, pages, isRead);
+    bookForm.reset();
+    formContainer.style.display = 'none';
+});
+
+render();
+
+    </script><hr><hr>
+<h1>MINI PROJECT 4</h1>
+<H3>Employee Management System</H3>
+    <form id="employeeForm">
+        <p id="empNameLabel">Employee Name:</p>
+        <input type="text" name="empName" id="empName" placeholder="Employee Name"/><br>
+        <p id="empIDLabel">Employee ID:</p>
+        <input type="text" name="empID" id="empID" placeholder="Employee ID"/><br>
+        <p id="deptLabel">Department:</p>
+        <input type="text" name="dept" id="dept" placeholder="Department"/><br><br>
+        <input id="addEmpButton" type="submit" value="Add Employee" onclick="addEmployee(event)">
+    </form>
+    <script type="text/javascript">
+        function addEmployee(event) {
+            event.preventDefault(); 
+
+            const empName = document.getElementById('empName').value;
+            const empID = document.getElementById('empID').value;
+            const dept = document.getElementById('dept').value;
+
+            if (empName === '' || empID === '' || dept === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            alert(`Employee Added!\nName: ${empName}\nEmployee ID: ${empID}\nDepartment: ${dept}`);
+        }
+    </script><hr><hr>
+<h1>MINI PROJECT 5</h1>
+<h3>Product inventory system</h3>
+<form id="inventoryForm">
+    <p id="productLabel">Product Name:</p>
+    <input type="text" name="product" id="product" placeholder="Product Name"/><br>
+    <p id="quantityLabel">Quantity:</p>
+    <input type="number" name="quantity" id="quantity" min="1" placeholder="Quantity"/><br>
+    <p id="priceLabel">Price per Unit:</p>
+    <input type="number" name="price" id="price" min="0.01" step="0.01" placeholder="Price per Unit"/><br><br>
+    <input id="addButton" type="submit" value="Add Product" onclick="addProduct(event)">
+    </form>
+    <script type="text/javascript">
+        function addProduct(event) {
+            event.preventDefault(); 
+
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const price = document.getElementById('price').value;
+
+            if (product === '' || quantity === '' || price === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            const totalCost = quantity * price;
+
+            alert(`Product Added!\nProduct: ${product}\nQuantity: ${quantity}\nPrice per Unit: $${price}\nTotal Cost: $${totalCost.toFixed(2)}`);
+        }
+    </script><hr><hr>
+<h1>MINI PROJECT 6</h1>
+<h3>Student Record Management System</h3>
+<form id="studentForm">
+    <p id="studentNameLabel">Student Name:</p>
+    <input type="text" name="studentName" id="studentName" placeholder="Student Name"/><br>
+    <p id="studentIDLabel">Student ID:</p>
+    <input type="text" name="studentID" id="studentID" placeholder="Student ID"/><br>
+    <p id="courseLabel">Course:</p>
+    <input type="text" name="course" id="course" placeholder="Course"/><br><br>
+    <input id="addStudentButton" type="submit" value="Add Student" onclick="addStudent(event)">
+    </form>
+<script type="text/javascript">
+    function addStudent(event) {
+        event.preventDefault(); 
+
+        const studentName = document.getElementById('studentName').value;
+        const studentID = document.getElementById('studentID').value;
+        const course = document.getElementById('course').value;
+
+        if (studentName === '' || studentID === '' || course === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        alert(`Student Added!\nName: ${studentName}\nStudent ID: ${studentID}\nCourse: ${course}`);
+    }
+    </script>
+</body>
+</html>

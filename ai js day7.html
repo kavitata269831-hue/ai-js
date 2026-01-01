@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>MINI PROJECT 1</h1>
+    <h3>Employee Management System</h3>
+    <form id="employeeForm">
+        <p id="nameLabel">Name:</p>
+        <input type="text" name="name" id="name" placeholder="Enter name" required/><br>
+        <p id="positionLabel">Position:</p>
+        <input type="text" name="position" id="position" placeholder="Enter position" required/><br>
+        <p id="departmentLabel">Department:</p>
+        <input type="text" name="department" id="department" placeholder="Enter department" required/><br>
+        <input id="addEmployeeButton" type="submit" value="Add Employee">
+        </form>
+    <script type="text/javascript">
+        const employeeForm = document.getElementById('employeeForm');
+
+        employeeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const position = document.getElementById('position').value;
+            const department = document.getElementById('department').value;
+        });
+    </script><hr><hr>
+<h1>MINI PROJECT 2</h1>
+<H3>Stuednt Record Manager</H3>
+<form id="studentForm"> 
+    <p id="studentNameLabel">Student Name:</p>
+    <input type="text" name="studentName" id="studentName" placeholder="Enter student name" required/><br>
+    <p id="studentIDLabel">Student ID: </p>
+    <input type="text" name="studentID" id="studentID" placeholder="Enter student ID" required/><br>
+    <p id="courseLabel">Course:</p>
+    <input type="text" name="course" id="course" placeholder="Enter course" required/><br>
+    <input id="addStudentButton" type="submit" value="Add Student">
+</form>
+<script type="text/javascript">
+    const studentForm = document.getElementById('studentForm');
+
+    studentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const studentName = document.getElementById('studentName').value;
+        const studentID = document.getElementById('studentID').value;
+        const course = document.getElementById('course').value;
+    });
+    </script><hr><hr>
+<h1>MINI PROJECT 3</h1>
+<h3>Student Record Manager</h3>
+<form id="courseForm"> 
+    <p id="courseNameLabel">Course Name:</p>
+    <input type="text" name="courseName" id="courseName" placeholder="Enter course name" required/><br>
+    <p id="courseCodeLabel">Course Code: </p>
+    <input type="text" name="courseCode" id="courseCode" placeholder="Enter course code" required/><br>
+    <p id="instructorLabel">Instructor:</p>
+    <input type="text" name="instructor" id="instructor" placeholder="Enter instructor name" required/><br>
+    <input id="addCourseButton" type="submit" value="Add Course">
+</form>
+<script type="text/javascript">
+    const courseForm = document.getElementById('courseForm');
+    courseForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const courseName = document.getElementById('courseName').value;
+        const courseCode = document.getElementById('courseCode').value;
+        const instructor = document.getElementById('instructor').value;
+    });
+    </script><hr><hr>
+<h1>MINI PROJECT 4</h1>
+<h3>Budget Modules</h3>
+<form id="budgetForm"> 
+    <p id="itemLabel">Item:</p>
+    <input type="text" name="item" id="item" placeholder="Enter item name" required/><br>
+    <p id="amountLabel">Amount: </p>
+    <input type="number" name="amount" id="amount" placeholder="Enter amount" required/><br>
+    <input id="addBudgetButton" type="submit" value="Add Budget Item">
+</form>
+<script type="text/javascript">
+    const budgetForm = document.getElementById('budgetForm');
+    budgetForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const item = document.getElementById('item').value;
+        const amount = document.getElementById('amount').value;
+    });
+</script><hr><hr>
+<h1>MINI PROJECT 5</h1>
+<h3>Shopping Cart System</h3>
+<form id="cartForm"> 
+    <p id="productLabel">Product:</p>
+    <input type="text" name="product" id="product" placeholder="Enter product name" required/><br>
+    <p id="quantityLabel">Quantity: </p>
+    <input type="number" name="quantity" id="quantity" placeholder="Enter quantity" required/><br>
+    <input id="addCartButton" type="submit" value="Add to Cart">
+</form>
+<script type="text/javascript">
+    const cartForm = document.getElementById('cartForm');
+    cartForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const product = document.getElementById('product').value;
+        const quantity = document.getElementById('quantity').value;
+    });
+    </script><hr><hr>
+<h1>MINI PROJECT 6</h1>
+<h3>Bank Account Management</h3>
+<form id="accountForm"> 
+    <p id="accountHolderLabel">Account Holder:</p>
+    <input type="text" name="accountHolder" id="accountHolder" placeholder="Enter account holder name" required/><br>
+    <p id="initialDepositLabel">Initial Deposit: </p>
+    <input type="number" name="initialDeposit" id="initialDeposit" placeholder="Enter initial deposit amount" required/><br>
+    <input id="createAccountButton" type="submit" value="Create Account">
+</form>
+<script type="text/javascript">
+    const accountForm = document.getElementById('accountForm');
+    accountForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const accountHolder = document.getElementById('accountHolder').value;
+        const initialDeposit = document.getElementById('initialDeposit').value;
+    });
+    </script><hr><hr>
+</body>
+</html>
